@@ -72,3 +72,174 @@ const jobCards = [
     status: 'NOT APPLIED'
   }
 ];
+
+
+
+
+
+
+
+
+function renderJob(arr){
+   cardsDiv.innerHTML = '';
+   if(arr.length > 0){
+    for(const item of arr){
+     const childDiv = document.createElement('div');
+     childDiv.classList.add('card')
+     
+     const headerButtonDiv = document.createElement('div');
+     headerButtonDiv.style.display = 'flex';
+     headerButtonDiv.style.alignItems = 'center';
+     headerButtonDiv.style.justifyContent = 'space-between';
+     
+     childDiv.append(headerButtonDiv);
+     const headerDiv = document.createElement('div');
+     headerButtonDiv.append(headerDiv);
+
+     const companyNameH1 = document.createElement('h1');
+     companyNameH1.textContent = item.companyName; 
+     companyNameH1.style.color = '#002C5C';
+     companyNameH1.style.fontSize = '1.125rem';
+     companyNameH1.style.fontWeight = '600'    
+    //  childDiv.append(companyNameH1);
+     headerDiv.append(companyNameH1);
+
+     const positionH2 = document.createElement('h2');
+     positionH2.textContent = item.position;
+     positionH2.style.color = '#64748B';
+     positionH2.style.marginBottom = '20px';
+    //  childDiv.append(positionH2);
+     headerDiv.append(positionH2);
+
+    //////////////
+
+    const deleteCart = document.createElement('button');
+    // deleteCart.textContent = 'delete';
+    deleteCart.innerHTML = `<i class="fa-regular fa-trash-can" style="color: #64748B;"></i>`
+    deleteCart.style.border = '1px solid #F1F2F4';
+    deleteCart.style.borderRadius = '100%';
+    deleteCart.style.padding = '4px 6px';
+    headerButtonDiv.append(deleteCart)
+    // childDiv.append(deleteCart);
+    deleteCart.addEventListener('click', function(){
+      jobCards.splice(jobCards.indexOf(item), 1)
+      updateCount();
+      filterOut(filterValue);
+    })
+
+
+    ///////////
+
+
+     const locationTypeSalary = document.createElement("p");
+     locationTypeSalary.textContent = `${item.location} | ${item.type} | ${item.salary}`
+     locationTypeSalary.style.color = '#64748B';
+     locationTypeSalary.style.fontSize = '14px';
+     locationTypeSalary.style.marginBottom = '20px';
+     childDiv.append(locationTypeSalary)
+
+
+
+     const buttonStatus = document.createElement('button');
+     const buttonSpan = document.createElement('span');
+     buttonSpan.textContent = item.status;
+     buttonSpan.style.backgroundColor = '#EEF4FF';
+     buttonSpan.style.padding = '12px';
+     buttonSpan.style.color = '#002C5C';
+     buttonSpan.style.fontWeight = '500';
+     buttonSpan.style.borderRadius = '4px';
+
+     if(item.status === 'INTERVIEW'){
+      buttonSpan.style.backgroundColor = '#52f4be58';
+      buttonSpan.style.color = '#10B981';
+      buttonSpan.style.border = '1px solid #10B981';
+      buttonSpan.style.borderRadius = '4px';
+      buttonSpan.style.padding = '10px 18px';
+     }
+     if(item.status === 'REJECTED'){
+     buttonSpan.style.backgroundColor = 'rgba(239, 68, 68, 0.35)';
+     buttonSpan.style.color = '#EF4444';
+     buttonSpan.style.border = '1px solid #EF4444';
+     buttonSpan.style.borderRadius = '4px';
+     buttonSpan.style.padding = '10px 24px';
+
+     }
+    
+     childDiv.append(buttonSpan)
+
+
+
+     const descriptionP = document.createElement('p');
+     descriptionP.textContent = item.description;
+     descriptionP.style.color = '#323B49';
+     descriptionP.style.margin = '16px 0 20px 0'
+     childDiv.append(descriptionP);
+
+
+     const buttonDiv = document.createElement('div');
+
+     const buttonInterview = document.createElement('button');
+     buttonInterview.textContent = 'INTERVIEW'
+     buttonInterview.style.padding = '9px 12px';
+     buttonInterview.style.border = '3px solid #10B981';
+     buttonInterview.style.borderRadius = '4px';
+     buttonInterview.style.fontWeight = '600';
+     buttonInterview.classList.add('interview-btn')
+
+     buttonInterview.classList.add("button-div")
+     buttonInterview.addEventListener("click", () => {
+        item.status = "INTERVIEW";
+        filterOut(filterValue);
+        updateCount()
+        
+      });
+      
+     buttonDiv.append(buttonInterview);
+
+     const buttonRejected = document.createElement('button');
+     buttonRejected.textContent = 'REJECTED';
+     buttonRejected.style.padding = '9px 16px';
+     buttonRejected.style.border = '3px solid #EF4444';
+     buttonRejected.style.borderRadius = '4px';
+     buttonRejected.style.fontWeight = '600';
+     buttonRejected.classList.add('rejected-btn')
+
+     buttonRejected.classList.add("button-div")
+     buttonRejected.addEventListener("click", () => {
+        item.status = "REJECTED";
+       filterOut(filterValue);
+       updateCount();
+
+      });
+
+     buttonDiv.append(buttonRejected);
+    
+
+     childDiv.append(buttonDiv)
+
+     cardsDiv.append(childDiv);
+
+    }
+
+
+   }
+   else{
+     cardsDiv.innerHTML = `
+       <div class="container py-[110px] bg-white flex justify-center">
+        <div class="text-center">
+          <img class="mx-auto mb-5" src="./assets/jobs.png" alt="" />
+          <h3 class="font-semibold text-2xl text-[#002C5C]">
+            No jobs available
+          </h3>
+          <p class="text[1rem] text-[#64748B]">
+            Check back soon for new job opportunities
+          </p>
+        </div>
+      </div>
+     `
+   }
+}
+
+renderJob(jobCards)
+
+updateCount()
