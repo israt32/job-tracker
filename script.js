@@ -78,6 +78,46 @@ const jobCards = [
 
 
 
+const countValue = document.getElementById('span-count');
+countValue.style.color = '#64748B';
+countValue.style.fontWeight = '500';
+const countAll = document.getElementById('count-all')
+const countInterview = document.getElementById('count-interview')
+const countRejected = document.getElementById('count-rejected')
+
+let countAllValue = 0;
+let countInterviewValue = 0;
+let countRejectedValue = 0;
+
+function updateCount(){
+  countAllValue = jobCards.length;
+  countAll.textContent = countAllValue;
+  const filterInterview = [];
+  const filterRejected = [];
+  for(const item of jobCards){
+    if(item.status === 'INTERVIEW'){
+      filterInterview.push(item);
+    }
+    else if(item.status === 'REJECTED'){
+       filterRejected.push(item);
+    }
+  }
+  countInterviewValue = filterInterview.length;
+  countInterview.textContent = countInterviewValue;
+  countRejectedValue = filterRejected.length;
+  countRejected.textContent = countRejectedValue;
+  if(filterValue === 'INTERVIEW'){
+    countValue.textContent = `${countInterviewValue} of ${countAllValue} jobs` 
+  }
+  else if(filterValue === 'REJECTED'){
+    countValue.textContent = `${countRejectedValue} of ${countAllValue} jobs`
+  }
+  else{
+    countValue.textContent = `${countAllValue} jobs`
+  }
+}
+
+
 
 // filter function
 function filterOut(value) {
