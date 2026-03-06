@@ -79,6 +79,24 @@ const jobCards = [
 
 
 
+// filter function
+function filterOut(value) {
+  
+  const query = value.toLowerCase();
+  const filteredArr = [];
+  if (query === "all") {
+    renderJob(jobCards);
+  } else {
+    for (const item of jobCards) { 
+
+      if (query === item.status.toLowerCase()) {
+        filteredArr.push(item);
+      }
+    }
+    renderJob(filteredArr);
+  }
+}
+
 
 function renderJob(arr){
    cardsDiv.innerHTML = '';
