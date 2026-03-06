@@ -297,10 +297,10 @@ function renderJob(arr){
    }
    else{
      cardsDiv.innerHTML = `
-       <div class="container py-[110px] bg-white flex justify-center">
+       <div class="container md:py-[110px] py-18 px-5 bg-white flex justify-center">
         <div class="text-center">
           <img class="mx-auto mb-5" src="./assets/jobs.png" alt="" />
-          <h3 class="font-semibold text-2xl text-[#002C5C]">
+          <h3 class="font-semibold text-[1.25rem] md:text-2xl text-[#002C5C]">
             No jobs available
           </h3>
           <p class="text[1rem] text-[#64748B]">
