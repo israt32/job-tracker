@@ -159,7 +159,7 @@ function renderJob(arr){
      
      const headerButtonDiv = document.createElement('div');
      headerButtonDiv.style.display = 'flex';
-     headerButtonDiv.style.alignItems = 'center';
+     headerButtonDiv.style.alignItems = 'start';
      headerButtonDiv.style.justifyContent = 'space-between';
      
      childDiv.append(headerButtonDiv);
@@ -218,6 +218,7 @@ function renderJob(arr){
      buttonSpan.style.color = '#002C5C';
      buttonSpan.style.fontWeight = '500';
      buttonSpan.style.borderRadius = '4px';
+     buttonSpan.classList.add("text-[14px]","md:text-[16px]" );
 
      if(item.status === 'INTERVIEW'){
       buttonSpan.style.backgroundColor = '#52f4be58';
@@ -231,8 +232,8 @@ function renderJob(arr){
      buttonSpan.style.color = '#EF4444';
      buttonSpan.style.border = '1px solid #EF4444';
      buttonSpan.style.borderRadius = '4px';
-     buttonSpan.style.padding = '10px 24px';
-
+     buttonSpan.style.padding = '10px 20px';
+     buttonSpan.classList.add("md:px-[24px]");
      }
     
      childDiv.append(buttonSpan)
@@ -242,7 +243,8 @@ function renderJob(arr){
      const descriptionP = document.createElement('p');
      descriptionP.textContent = item.description;
      descriptionP.style.color = '#323B49';
-     descriptionP.style.margin = '16px 0 20px 0'
+     descriptionP.style.margin = '16px 0 20px 0';
+     descriptionP.classList.add( "text-sm", "md:text-[1rem]");
      childDiv.append(descriptionP);
 
 
