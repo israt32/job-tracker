@@ -1,0 +1,52 @@
+body{
+ background-color: #F8FAFC;
+ font-family: "Geist", sans-serif;
+}
+
+.card{
+  padding: 24px;
+  margin-bottom: 16px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+
+.button-div{
+  padding: 12px 8px;
+  border: 1px solid black;
+  margin-right: 8px;
+}
+
+.available-jobs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.active{
+  background-color: #3B82F6;
+  color: white;
+}
+
+.interview-btn {
+  transition: 0.3s;
+  cursor: pointer;
+  color: #10B981;
+}
+
+.interview-btn:hover {
+  background-color: #10B981;
+  color: white;
+}
+
+.rejected-btn{
+  transition: 0.3s;
+  cursor: pointer;
+  color: #EF4444;
+}
+
+.rejected-btn:hover{
+background-color: #EF4444;
+  color: white;
+}
