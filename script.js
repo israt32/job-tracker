@@ -74,8 +74,20 @@ const jobCards = [
 ];
 
 
+const cardsDiv = document.getElementById('cards')
 
+let filterValue = "all";
 
+const filterBtns = document.querySelectorAll(".filter-btn");
+for (const btn of filterBtns) {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach((item) => item.classList.remove("active"));
+    btn.classList.add("active");
+    filterValue = btn.value;
+    filterOut(filterValue);
+    updateCount();
+  });
+}
 
 
 const countValue = document.getElementById('span-count');
