@@ -1,4 +1,4 @@
-<!-- 
+
 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
 Ans: getElementById selects a single element using its id. getElementsByClassName selects all elements that share the same class and returns a collection. querySelector selects the first element that matches a CSS selector, while querySelectorAll selects all elements that match the selector
@@ -21,4 +21,3 @@ Ans: preventDefault stops the browser’s default behavior for an event, for exa
 
 
 
- -->
